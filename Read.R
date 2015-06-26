@@ -3,11 +3,9 @@ library(dplyr)
 data_dir <- "~/workspace/data/names"
 
 readYear <- function(year, folder = data_dir) {
-  year <- as.numeric(year)
   file <- paste(folder,"/yob", year, ".txt", sep = "")
-  temp <- read.csv(file, header = FALSE)
-  names(temp) <- c("Name", "Sex", "Frequency")
-  temp$Year <- rep(year, nrow(temp))
+  temp <- read.csv(file, header = FALSE, col.names = c("Name", "Sex", "Frequency"))
+  temp$Year <- rep(as.numeric(year), nrow(temp))
   return(temp);
 }
 
