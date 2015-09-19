@@ -13,9 +13,10 @@ bottom_by_year <- function(yr, data = female_names) {
                 arrange(Frequency), n = 10))
 }
 
-plot_name <- function(name, data = female_names) {
+plot_name <- function(name, data = names) {
   temp <- filter(data, Name == name)
-  qplot(temp$Year, temp$Frequency, color = temp$Sex)
+  qplot(temp$Year, temp$Frequency, color = temp$Sex, geom = "line",
+        xlab = "Year", ylab = "Frequency", main = name)
 }
 
 get_common <- function(data, frq = 1000) {
@@ -34,3 +35,5 @@ explore_common <- function(number = 5, data = common_female) {
   temp <- filter(data, data$Frequency > 1000)
   return(sample_n(temp, number))
 }
+
+contenders <- c("Hailey", "Haley", "Hayley", "Molly", "Allison", "Grace", "Hadley")
