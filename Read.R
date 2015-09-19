@@ -14,4 +14,5 @@ for(y in 1980:2014) {
   names <- rbind(names, readYear(y))
 }
 
+male_names <- filter(names, Sex == "M")
 female_names <- filter(names, Sex == "F")
